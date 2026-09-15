@@ -18,3 +18,8 @@ data/processed/
 .ipynb_checkpoints/
 airflow/logs/
 airflow/airflow.db
+
+# API landing, sink receipts, fetched remote docs
+data/landing/
+data/sink_receipts/
+data/remote_docs/

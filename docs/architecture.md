@@ -43,3 +43,12 @@ eval/
 
 1. **extractive** (default) — ranks sentences from retrieved chunks by keyword overlap and similarity; works fully offline.
 2. **openai_compatible** — set `generate.mode` to `openai_compatible` and provide `OPENAI_BASE_URL`, `OPENAI_API_KEY`, `OPENAI_MODEL`. Works with OpenAI or any compatible gateway.
+
+
+## API source and sink
+
+**Source:** `sources.http_documents` in `config/pipeline.yaml` lists public HTTP URLs (GitHub raw Markdown, JSONPlaceholder JSON). Stage `pull_remote_docs` downloads them into `data/remote_docs/`; ingest merges that directory with `data/source_docs/`.
+
+**Sink:** Stage `push_results` POSTs ask/eval payloads to local FastAPI (`SINK_API_URL`, default `http://127.0.0.1:8089/ingest`) and optional JSONPlaceholder (`EXTERNAL_SINK_URL`). Receipts land under `data/sink_receipts/`.
+
+CLI: `python -m src.pipeline run --stage pull_remote_docs|push_results` or `--source api` / `--sink api` flags.

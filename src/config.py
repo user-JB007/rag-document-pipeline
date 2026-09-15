@@ -28,6 +28,8 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
 
 
 def ensure_dirs(cfg: dict[str, Any]) -> None:
-    """Create processed and index directories if missing."""
-    for key in ("processed", "index"):
+    """Create processed, index, and remote_docs directories if configured."""
+    for key in ("processed", "index", "remote_docs"):
+        if key not in cfg.get("paths", {}):
+            continue
         Path(cfg["paths"][key]).mkdir(parents=True, exist_ok=True)

@@ -1,13 +1,21 @@
 # RAG document pipeline configuration
 paths:
   source_docs: data/source_docs
+  remote_docs: data/remote_docs
   processed: data/processed
   index: data/index
   eval_questions: eval/questions.json
   eval_results: eval/results.json
 
+sources:
+  # Primary API source: public HTTP documents (no keys). Fetched by pull_remote_docs.
+  http_documents:
+    - https://raw.githubusercontent.com/github/docs/main/content/get-started/using-github/github-flow.md
+    - https://jsonplaceholder.typicode.com/posts/1
+
 ingest:
-  extensions: [".md", ".txt", ".pdf", ".markdown"]
+  extensions: [".md", ".txt", ".pdf", ".markdown", ".json"]
+  include_remote_docs: true
 
 chunk:
   size: 500
@@ -39,3 +47,15 @@ generate:
 eval:
   top_k: 4
   hit_threshold: 0.25
+
+api_source:
+  timeout: 20
+  retries: 3
+
+api_sink:
+  local_url: http://127.0.0.1:8089/ingest
+  external_url: https://jsonplaceholder.typicode.com/posts
+  timeout: 20
+  retries: 3
+  post_local: true
+  post_external: true

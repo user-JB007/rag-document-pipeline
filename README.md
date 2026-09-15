@@ -7,6 +7,8 @@ Production-oriented retrieval-augmented generation pipeline for an internal know
 ```mermaid
 flowchart LR
   A[Source docs<br/>PDF / MD / TXT] --> B[Ingest]
+  R[HTTP documents<br/>GitHub raw + JSONPlaceholder] --> P[pull_remote_docs]
+  P --> B
   B --> C[Chunk]
   C --> D[Embed<br/>sentence-transformers]
   D --> E[Index<br/>NumPy cosine (default) / Chroma / FAISS]
@@ -14,17 +16,38 @@ flowchart LR
   F --> G[Generate answer]
   E --> H[Evaluate<br/>golden Q&A]
   G --> I[CLI / FastAPI]
+  G --> S[HTTP sinks]
+  H --> S
+  S --> L[Local FastAPI /ingest]
+  S --> J[JSONPlaceholder /posts]
 ```
 
 | Stage | Module | I/O |
 |-------|--------|-----|
-| Ingest | `src/ingest/` | files → `documents.jsonl` |
+| pull_remote_docs | `src/integrations/remote_docs.py` | HTTP URLs → `data/remote_docs/` |
+| Ingest | `src/ingest/` | local + remote files → `documents.jsonl` |
 | Chunk | `src/chunk/` | docs → `chunks.jsonl` |
 | Embed | `src/embed/` | chunks → `embeddings.npy` |
 | Index | `src/index/` | vectors → `data/index/` (NumPy vectors by default) |
 | Retrieve | `src/retrieve/` | query → ranked hits |
 | Generate | `src/generate/` | hits → grounded answer |
 | Evaluate | `src/eval/` | golden set → `eval/results.json` |
+| push_results | `src/integrations/api_sink.py` | ask/eval JSON → HTTP sinks |
+
+### Sources
+
+| Source | Type | Notes |
+|--------|------|-------|
+| `data/source_docs/` | File | Default offline corpus |
+| `sources.http_documents` in `config/pipeline.yaml` | HTTP GET | Primary API source — public URLs (GitHub raw Markdown, JSONPlaceholder post JSON). Fetched into `data/remote_docs/` and merged at ingest |
+
+### Sinks
+
+| Sink | Type | Notes |
+|------|------|-------|
+| Local landing API | HTTP POST | `src/sinks/http_sink_server.py` — `POST /ingest` → `data/landing/`; `SINK_API_URL` default `http://127.0.0.1:8089/ingest` |
+| [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts) | HTTP POST | Alternate external sink (`EXTERNAL_SINK_URL`) |
+| File fallback | Local JSON | If local sink is unreachable, results are written under `data/landing/` |
 
 Configuration lives in [`config/pipeline.yaml`](config/pipeline.yaml). Longer design notes: [`docs/architecture.md`](docs/architecture.md).
 
@@ -73,6 +96,24 @@ python -m src.pipeline run --stage eval
 python -m src.pipeline run --stage all
 ```
 
+**API source + sink:**
+
+```bash
+# Fetch remote HTTP documents into data/remote_docs/
+python -m src.pipeline run --stage pull_remote_docs
+
+# Push ask/eval results to local sink + JSONPlaceholder
+python -m src.pipeline run --stage push_results
+
+# Ask and POST the answer payload
+python -m src.pipeline ask --question "How often must system owners run access reviews for production applications?" --sink api
+
+# Local sink receiver
+uvicorn src.sinks.http_sink_server:app --host 127.0.0.1 --port 8089
+```
+
+Offline: skip `pull_remote_docs` / use existing `data/source_docs/` only. If a prior remote file exists for a URL, network failures reuse it.
+
 **HTTP API:**
 
 ```bash
@@ -109,6 +150,8 @@ src/
   retrieve/searcher.py
   generate/answerer.py
   eval/metrics.py
+  integrations/        remote HTTP docs + result sink client
+  sinks/http_sink_server.py
   api/app.py           FastAPI /ask + /health
 dags/rag_pipeline_dag.py
 config/pipeline.yaml
