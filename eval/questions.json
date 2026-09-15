@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "id": "q1_access_review",
+      "question": "How often must system owners run access reviews for production applications?",
+      "expected_doc_id_substrings": ["access_control_policy"],
+      "expected_keywords": ["quarterly", "access reviews"]
+    },
+    {
+      "id": "q2_sev1_status",
+      "question": "When must a SEV1 incident be posted to the external status page?",
+      "expected_doc_id_substrings": ["incident_response_runbook"],
+      "expected_keywords": ["30", "status"]
+    },
+    {
+      "id": "q3_billing_downgrade",
+      "question": "When do subscription downgrades take effect?",
+      "expected_doc_id_substrings": ["product_faq_billing"],
+      "expected_keywords": ["renewal", "downgrade"]
+    },
+    {
+      "id": "q4_retention_logs",
+      "question": "How long are application logs retained?",
+      "expected_doc_id_substrings": ["data_retention_policy"],
+      "expected_keywords": ["90 days"]
+    },
+    {
+      "id": "q5_oncall_ack",
+      "question": "Within how many minutes must primary on-call acknowledge a SEV1 page?",
+      "expected_doc_id_substrings": ["oncall_handoff_guide"],
+      "expected_keywords": ["15 minutes"]
+    },
+    {
+      "id": "q6_payment_failure",
+      "question": "What happens after three failed payment charge attempts?",
+      "expected_doc_id_substrings": ["product_faq_billing"],
+      "expected_keywords": ["grace period", "14-day"]
+    },
+    {
+      "id": "q7_contractor_expiry",
+      "question": "When do temporary contractor accounts expire?",
+      "expected_doc_id_substrings": ["access_control_policy"],
+      "expected_keywords": ["contract end date"]
+    },
+    {
+      "id": "q8_legal_hold",
+      "question": "Who manages legal holds that suspend retention clocks?",
+      "expected_doc_id_substrings": ["data_retention_policy"],
+      "expected_keywords": ["Legal", "hold"]
+    }
+  ]
+}

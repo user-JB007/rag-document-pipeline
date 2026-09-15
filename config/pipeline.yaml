@@ -1,0 +1,41 @@
+# RAG document pipeline configuration
+paths:
+  source_docs: data/source_docs
+  processed: data/processed
+  index: data/index
+  eval_questions: eval/questions.json
+  eval_results: eval/results.json
+
+ingest:
+  extensions: [".md", ".txt", ".pdf", ".markdown"]
+
+chunk:
+  size: 500
+  overlap: 80
+  min_chars: 40
+
+embed:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+  batch_size: 32
+  device: cpu
+
+index:
+  backend: numpy  # numpy | chroma | faiss
+  collection_name: knowledge_docs
+  distance: cosine
+
+retrieve:
+  top_k: 4
+  score_threshold: 0.0
+
+generate:
+  mode: extractive  # extractive | openai_compatible
+  max_context_chars: 3500
+  openai_base_url_env: OPENAI_BASE_URL
+  openai_api_key_env: OPENAI_API_KEY
+  openai_model_env: OPENAI_MODEL
+  default_openai_model: gpt-4o-mini
+
+eval:
+  top_k: 4
+  hit_threshold: 0.25

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rag-document-pipeline"
+version = "1.0.0"
+description = "Document RAG pipeline: ingest, chunk, embed, index, retrieve, generate, evaluate"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "sentence-transformers==3.3.1",
+  "numpy==2.2.1",
+  "fastapi==0.115.6",
+  "uvicorn==0.34.0",
+  "pyyaml==6.0.2",
+  "pydantic==2.10.4",
+  "pydantic-settings==2.7.0",
+  "httpx==0.28.1",
+  "python-multipart==0.0.20",
+  "pypdf==5.1.0",
+]
+
+[project.optional-dependencies]
+chroma = ["chromadb==0.5.23"]
+faiss = ["faiss-cpu==1.9.0.post1"]
+
+[project.scripts]
+rag-pipeline = "src.pipeline:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]

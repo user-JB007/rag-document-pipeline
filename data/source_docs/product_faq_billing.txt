@@ -1,0 +1,19 @@
+Product FAQ — Billing and Subscriptions
+Document ID: FAQ-PROD-003
+Owner: Product Support
+Last updated: 2025-11-02
+
+Q: How do I change my subscription plan?
+A: Account owners can change plans under Settings > Billing > Change plan. Upgrades take effect immediately and are prorated. Downgrades apply at the next renewal date. You cannot downgrade while an unpaid invoice is open.
+
+Q: When are invoices generated?
+A: Monthly plans are invoiced on the anniversary of the subscription start date. Annual plans are invoiced once per year on the same anniversary. Invoices are emailed to the billing contact and available under Settings > Billing > Invoices for 24 months.
+
+Q: What payment methods are supported?
+A: We accept major credit cards (Visa, Mastercard, American Express) and ACH for annual Enterprise contracts. Wire transfers require a minimum annual commitment of $25,000 and a completed W-9 on file.
+
+Q: How do refunds work?
+A: Unused prepaid months on annual plans may be refunded within 14 days of purchase if no production usage has occurred. Monthly plans are non-refundable after the first billing cycle. Contact support@northline.io with your invoice number to start a refund request.
+
+Q: What happens if payment fails?
+A: We retry failed charges on day 1, day 3, and day 7. After three failures, the account enters a 14-day grace period with read-only access. If payment is not resolved, the subscription is cancelled and data is retained for 30 days per the Data Retention Policy.

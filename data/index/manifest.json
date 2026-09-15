@@ -1,0 +1,6 @@
+{
+  "backend": "numpy",
+  "count": 20,
+  "dimensions": 384,
+  "distance": "cosine"
+}

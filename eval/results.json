@@ -1,0 +1,229 @@
+{
+  "summary": {
+    "num_questions": 8,
+    "hit_at_k": 1.0,
+    "keyword_recall": 1.0,
+    "context_relevance": 0.3504,
+    "faithfulness_lite": 0.845,
+    "top_k": 4,
+    "evaluated_at": "2026-09-15T19:04:26Z"
+  },
+  "questions": [
+    {
+      "id": "q1_access_review",
+      "question": "How often must system owners run access reviews for production applications?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.4318,
+      "faithfulness_lite": 0.8909,
+      "top_scores": [
+        0.4307,
+        0.4114,
+        0.401,
+        0.3164
+      ],
+      "retrieved_doc_ids": [
+        "access_control_policy-df1f978427e9",
+        "access_control_policy-df1f978427e9",
+        "access_control_policy-df1f978427e9",
+        "incident_response_runbook-b492154b18a8"
+      ],
+      "retrieved_titles": [
+        "Access Control Policy",
+        "Access Control Policy",
+        "Access Control Policy",
+        "Incident Response Runbook"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\n## Access reviews\n\n- System owners run quarterly access reviews for applications tagged `customer-data` or `production`. # Access Control Policy\n\n**Document ID:** POL-SEC-001  \n**Owner:** Security Operations  \n**Effective:"
+    },
+    {
+      "id": "q2_sev1_status",
+      "question": "When must a SEV1 incident be posted to the external status page?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.4444,
+      "faithfulness_lite": 0.8846,
+      "top_scores": [
+        0.7014,
+        0.6202,
+        0.5655,
+        0.4617
+      ],
+      "retrieved_doc_ids": [
+        "incident_response_runbook-b492154b18a8",
+        "incident_response_runbook-b492154b18a8",
+        "incident_response_runbook-b492154b18a8",
+        "oncall_handoff_guide-aa67ee465d9a"
+      ],
+      "retrieved_titles": [
+        "Incident Response Runbook",
+        "Incident Response Runbook",
+        "Incident Response Runbook",
+        "On-Call Handoff Guide"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\n## Communication\n\n| Severity | Internal update cadence | External status page |\n|----------|-------------------------|----------------------|\n| SEV1     | Every 15 minutes        | Required within 30 min |\n| SEV2     | Eve"
+    },
+    {
+      "id": "q3_billing_downgrade",
+      "question": "When do subscription downgrades take effect?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.3,
+      "faithfulness_lite": 0.8438,
+      "top_scores": [
+        0.5448,
+        0.459,
+        0.3744,
+        0.3232
+      ],
+      "retrieved_doc_ids": [
+        "product_faq_billing-6c2806f31d62",
+        "product_faq_billing-6c2806f31d62",
+        "access_control_policy-df1f978427e9",
+        "data_retention_policy-a4277db335aa"
+      ],
+      "retrieved_titles": [
+        "Product FAQ \u2014 Billing and Subscriptions",
+        "Product FAQ \u2014 Billing and Subscriptions",
+        "Access Control Policy",
+        "Data Retention Policy"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\nUpgrades take effect immediately and are prorated. Product FAQ \u2014 Billing and Subscriptions\nDocument ID: FAQ-PROD-003\nOwner: Product Support\nLast updated: 2025-11-02\n\nQ: How do I change my subscription plan? Downgrades appl"
+    },
+    {
+      "id": "q4_retention_logs",
+      "question": "How long are application logs retained?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.2083,
+      "faithfulness_lite": 0.9167,
+      "top_scores": [
+        0.595,
+        0.508,
+        0.4843,
+        0.3824
+      ],
+      "retrieved_doc_ids": [
+        "data_retention_policy-a4277db335aa",
+        "data_retention_policy-a4277db335aa",
+        "data_retention_policy-a4277db335aa",
+        "product_faq_billing-6c2806f31d62"
+      ],
+      "retrieved_titles": [
+        "Data Retention Policy",
+        "Data Retention Policy",
+        "Data Retention Policy",
+        "Product FAQ \u2014 Billing and Subscriptions"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\n-------------|--------------------|--------------------------------------------|\n| Customer content        | Contract term    | 30 days            | Soft-delete then purge                     |\n| Application logs        | "
+    },
+    {
+      "id": "q5_oncall_ack",
+      "question": "Within how many minutes must primary on-call acknowledge a SEV1 page?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.425,
+      "faithfulness_lite": 0.9091,
+      "top_scores": [
+        0.6306,
+        0.5267,
+        0.5087,
+        0.4869
+      ],
+      "retrieved_doc_ids": [
+        "oncall_handoff_guide-aa67ee465d9a",
+        "incident_response_runbook-b492154b18a8",
+        "oncall_handoff_guide-aa67ee465d9a",
+        "incident_response_runbook-b492154b18a8"
+      ],
+      "retrieved_titles": [
+        "On-Call Handoff Guide",
+        "Incident Response Runbook",
+        "On-Call Handoff Guide",
+        "Incident Response Runbook"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\n## Communication\n\n| Severity | Internal update cadence | External status page |\n|----------|-------------------------|----------------------|\n| SEV1     | Every 15 minutes        | Required within 30 min |\n| SEV2     | Eve"
+    },
+    {
+      "id": "q6_payment_failure",
+      "question": "What happens after three failed payment charge attempts?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.4062,
+      "faithfulness_lite": 0.7391,
+      "top_scores": [
+        0.6441,
+        0.4846,
+        0.3233,
+        0.3163
+      ],
+      "retrieved_doc_ids": [
+        "product_faq_billing-6c2806f31d62",
+        "product_faq_billing-6c2806f31d62",
+        "incident_response_runbook-b492154b18a8",
+        "product_faq_billing-6c2806f31d62"
+      ],
+      "retrieved_titles": [
+        "Product FAQ \u2014 Billing and Subscriptions",
+        "Product FAQ \u2014 Billing and Subscriptions",
+        "Incident Response Runbook",
+        "Product FAQ \u2014 Billing and Subscriptions"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\nQ: What happens if payment fails? happens if payment fails? After three failures, the account enters a 14-day grace period with read-only access. Q: What payment methods are supported?"
+    },
+    {
+      "id": "q7_contractor_expiry",
+      "question": "When do temporary contractor accounts expire?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.4,
+      "faithfulness_lite": 0.7273,
+      "top_scores": [
+        0.6275,
+        0.5076,
+        0.4123,
+        0.4057
+      ],
+      "retrieved_doc_ids": [
+        "access_control_policy-df1f978427e9",
+        "access_control_policy-df1f978427e9",
+        "data_retention_policy-a4277db335aa",
+        "data_retention_policy-a4277db335aa"
+      ],
+      "retrieved_titles": [
+        "Access Control Policy",
+        "Access Control Policy",
+        "Data Retention Policy",
+        "Data Retention Policy"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\nTemporary contractor accounts expire on the contract end date and are not auto-renewed. Local accounts are allowed only when SSO is unsupported and must use MFA. Accounts use SSO where available. ts expire on the contract "
+    },
+    {
+      "id": "q8_legal_hold",
+      "question": "Who manages legal holds that suspend retention clocks?",
+      "hit_at_k": true,
+      "keyword_recall": 1.0,
+      "context_relevance": 0.1875,
+      "faithfulness_lite": 0.8485,
+      "top_scores": [
+        0.5769,
+        0.5013,
+        0.4681,
+        0.4614
+      ],
+      "retrieved_doc_ids": [
+        "data_retention_policy-a4277db335aa",
+        "access_control_policy-df1f978427e9",
+        "access_control_policy-df1f978427e9",
+        "data_retention_policy-a4277db335aa"
+      ],
+      "retrieved_titles": [
+        "Data Retention Policy",
+        "Access Control Policy",
+        "Access Control Policy",
+        "Data Retention Policy"
+      ],
+      "answer_preview": "Based on 4 retrieved passage(s) from the knowledge base:\n\n## Legal holds\n\nLegal holds suspend normal retention clocks. Holds are managed by Legal in the hold register and must list affected systems and custodians. Purge from active stores after 30 days unless a legal hold applies"
+    }
+  ]
+}
