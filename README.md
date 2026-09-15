@@ -6,20 +6,20 @@ Production-oriented retrieval-augmented generation pipeline for an internal know
 
 ```mermaid
 flowchart LR
-  A[Source docs<br/>PDF / MD / TXT] --> B[Ingest]
-  R[HTTP documents<br/>GitHub raw + JSONPlaceholder] --> P[pull_remote_docs]
+  A["Source docs - PDF MD TXT"] --> B[Ingest]
+  R["HTTP documents"] --> P[pull_remote_docs]
   P --> B
   B --> C[Chunk]
-  C --> D[Embed<br/>sentence-transformers]
-  D --> E[Index<br/>NumPy cosine (default) / Chroma / FAISS]
-  E --> F[Retrieve top-k]
+  C --> D["Embed - sentence-transformers"]
+  D --> E["Index - NumPy cosine / Chroma / FAISS"]
+  E --> F["Retrieve top-k"]
   F --> G[Generate answer]
-  E --> H[Evaluate<br/>golden Q&A]
-  G --> I[CLI / FastAPI]
+  E --> H["Evaluate - golden QA"]
+  G --> I["CLI / FastAPI"]
   G --> S[HTTP sinks]
   H --> S
-  S --> L[Local FastAPI /ingest]
-  S --> J[JSONPlaceholder /posts]
+  S --> L["Local FastAPI ingest"]
+  S --> J["JSONPlaceholder posts"]
 ```
 
 | Stage | Module | I/O |
